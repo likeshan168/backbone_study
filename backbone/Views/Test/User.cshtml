@@ -1,0 +1,100 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>用户管理</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style type="text/css">
+        .edit {
+            display: none;
+        }
+
+        .view {
+            display: block;
+        }
+
+        tr.editing .edit {
+            display: block;
+        }
+
+        tr.editing .view {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputName" placeholder="用户名">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputPassword" placeholder="密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="inputActive"> 启用
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" id="btn_add" class="btn btn-default">添加</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="alert alert-danger text-center" style="display:none">
+        <ul id="error_list"></ul>
+    </div>
+
+    <div class="container" style="display:none">
+        <table id="user_list" class="table table-condensed "></table>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/underscore.min.js"></script>
+    <script src="~/Scripts/backbone.min.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/backbone-localstorage.js/1.1.7/backbone.localStorage-min.js"></script>
+    <script src="~/Scripts/myjs/user.js"></script>
+
+
+    <script type="text/template" id="user_template">
+        <td>用户名</td>
+        <td><span class="view viewName"><%=userName%></span> <input type="text" id="editName" class="input-sm edit userName" value="<%=userName%>" /></td>
+        <td>密码</td>
+        <td>
+            <span class="view viewPassword"><%=password%></span><input type="text" id="editPassword" class="input-sm edit password" value="<%=password%>" />
+        </td>
+        <td>
+
+            <%=isActive==true?'<label><input type="checkbox" checked="checked" class="isActive" />启用</label>':'<label><input type="checkbox" class="isActive" />启用</label>'%>
+        </td>
+        <td>
+            <div class="container">
+                <input type="button" class="btn btn-default view" value="编辑" /><input type="button" class="btn btn-primary edit" value="保存" /><input type="button" class="btn btn-warning edit" value="取消" /><input type="button" class="btn btn-danger view" value="删除" />
+            </div>
+        </td>
+    </script>
+
+    <script type="text/template" id="error_template">
+        <span><%=errorMsg%></span>
+    </script>
+</body>
+</html>
