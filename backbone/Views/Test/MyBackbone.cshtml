@@ -1,0 +1,70 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style type="text/css">
+        .line_del {
+            text-decoration: line-through;
+        }
+
+        li .view {
+            display: block;
+        }
+
+        li .edit {
+            display: none;
+        }
+
+        li.editing .edit {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="todoapp">
+        <input class="form-control" type="text" id="new_todo" placeholder="What needs to be done?" />
+        <label class="control-label">
+            <input type="checkbox" id="toggle-all" />标记全部完成
+        </label>
+    </div>
+
+    <div class="container">
+        <ul id="todo-list">
+            <li>hh</li>
+        </ul>
+    </div>
+
+
+
+
+
+
+    <script type="text/template" id="item-template">
+        <div class="view">
+            <label class="control-label">
+                <input type="checkbox" id="check_item" /><%=title%>
+            </label>
+            @*<img class="img-circle" src="/Content/destroy.png" />*@
+        </div>
+        <input type="text" class="form-control edit" value="<%=title%>" />
+    </script>
+
+    <script type="text/template" id="status-template">
+
+    </script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/underscore.min.js"></script>
+    <script src="~/Scripts/backbone.min.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/backbone-localstorage.js/1.1.7/backbone.localStorage-min.js"></script>
+    <script src="~/Scripts/myjs/mybackbone.js"></script>
+
+</body>
+</html>
